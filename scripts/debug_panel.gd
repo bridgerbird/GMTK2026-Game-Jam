@@ -16,9 +16,12 @@ var fields = [
 	{ "property": "jump_cut_multiplier", "label": "Jump Cut Multiplier", "tab": "Jump" },
 	{ "property": "number_of_jumps", "label": "Number of Jumps", "tab": "Jump" },
 	{ "property": "zoom_in", "label": "Zoom In", "tab": "Camera" },
+	{ "property": "initial_lerp_speed", "label": "Initial Lerp Speed", "tab": "Camera" },
 	{ "property": "zoom_out", "label": "Zoom Out", "tab": "Camera" },
+	{ "property": "zoom_lerp_speed", "label": "Zoom Lerp Speed", "tab": "Camera" },
 	{ "property": "zoom_in_wait", "label": "Zoom In Wait", "tab": "Camera" },
-	{ "property": "chase_vertical_wait", "label": "Chase Vertical Wait", "tab": "Camera" }
+	{ "property": "chase_vertical_wait", "label": "Chase Vertical Wait", "tab": "Camera" },
+	{ "property": "chase_lerp_speed", "label": "Chase Lerp Speed", "tab": "Camera" }
 ]
 
 # show the text

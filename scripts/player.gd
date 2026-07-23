@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var camera = $Camera2D
 
 var jumps = GameConfig.number_of_jumps
 
