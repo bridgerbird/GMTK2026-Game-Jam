@@ -5,7 +5,6 @@ var jumps = GameConfig.number_of_jumps
 
 # Updates and Starts playing the correct animation
 func update_animation(animation_state):
-	print(animation_state)
 	# Flip directions
 	if velocity.x < 0:
 		animated_sprite.flip_h = true
@@ -45,14 +44,17 @@ func handle_normal_movement(delta):
 	# Handle partial jump.
 	# multiply jump velocity toward 0 after releasing jump button
 	if Input.is_action_just_released("jump") and velocity.y < 0:
-		velocity.y *= GameConfig.jump_cut_multipier
+		velocity.y *= GameConfig.jump_cut_multiplier
 	
 	# Get input direction
 	var direction = Input.get_axis("move_left", "move_right")
 	# Handle movement
-	velocity.x = direction * GameConfig.move_speed
+	var target_speed = direction * GameConfig.move_speed
+	velocity.x = move_toward(velocity.x, target_speed, GameConfig.acceleration * delta)
 	# Handle walking and standing animations excluding while jumping
-	if velocity.y == 0 && velocity.x != 0:
+	if velocity.y == 0 && velocity.x == GameConfig.move_speed:
+		update_animation("run")
+	elif velocity.y == 0 && velocity.x != 0:
 		update_animation("walk")
 	elif velocity.y == 0 && velocity.x == 0:
 		update_animation("idle")
