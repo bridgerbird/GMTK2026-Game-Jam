@@ -48,9 +48,19 @@ func handle_normal_movement(delta):
 	
 	# Get input direction
 	var direction = Input.get_axis("move_left", "move_right")
+	print(direction)
 	# Handle movement
 	var target_speed = direction * GameConfig.move_speed
-	velocity.x = move_toward(velocity.x, target_speed, GameConfig.acceleration * delta)
+	# Switch directions mid-movement
+	if direction != 0 and velocity.x * direction < 0:
+		velocity.x = direction * GameConfig.turn_speed
+	# Accelerate towards target_speed if movement button is being pressed
+	elif direction != 0:
+		velocity.x = move_toward(velocity.x, target_speed, GameConfig.acceleration * delta)
+	# Deceleration
+	else:
+		velocity.x = move_toward(velocity.x, target_speed, GameConfig.deceleration * delta)
+	
 	# Handle walking and standing animations excluding while jumping
 	if velocity.y == 0 && velocity.x == GameConfig.move_speed:
 		update_animation("run")

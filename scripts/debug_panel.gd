@@ -6,6 +6,8 @@ const ConfigFieldScene = preload("res://scenes/ConfigField.tscn")
 var fields = [
 	{ "property": "move_speed", "label": "Move Speed", "tab": "Movement" },
 	{ "property": "acceleration", "label": "Acceleration", "tab": "Movement" },
+	{ "property": "deceleration", "label": "Deceleration", "tab": "Movement" },	
+	{ "property": "turn_speed", "label": "Turn Speed", "tab": "Movement" },	
 	{ "property": "jump_velocity", "label": "Jump Velocity", "tab": "Jump" },
 	{ "property": "ascend_gravity", "label": "Ascend Gravity", "tab": "Jump" },
 	{ "property": "descend_gravity", "label": "Descend Gravity", "tab": "Jump" },
