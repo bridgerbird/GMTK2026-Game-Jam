@@ -17,6 +17,11 @@ var target_speed = GameConfig.initial_lerp_speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Update Config Conversions
+	# 	only necessary for Config Panel changes
+	zoom_in = Vector2(GameConfig.zoom_in, GameConfig.zoom_in)
+	zoom_out = Vector2(GameConfig.zoom_out, GameConfig.zoom_out)
+	
 	# Zoom out from initial zoom to zoom_in variable
 	if initial_zoom_flag:
 		target_zoom = zoom_in
