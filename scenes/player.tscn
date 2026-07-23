@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://facs5c2kvssy"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1322426992]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2114419768]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1299267809]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=796612001]
