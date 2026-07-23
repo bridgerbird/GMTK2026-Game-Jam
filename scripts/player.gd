@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var camera = $Camera2D
+
 var jumps = GameConfig.number_of_jumps
 
 # Updates and Starts playing the correct animation
@@ -48,7 +50,6 @@ func handle_normal_movement(delta):
 	
 	# Get input direction
 	var direction = Input.get_axis("move_left", "move_right")
-	print(direction)
 	# Handle movement
 	var target_speed = direction * GameConfig.move_speed
 	# Switch directions mid-movement

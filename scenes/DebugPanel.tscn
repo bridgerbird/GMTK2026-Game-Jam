@@ -23,3 +23,8 @@ metadata/_tab_index = 0
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="Camera" type="VBoxContainer" parent="Panel/TabContainer" unique_id=1929628009]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

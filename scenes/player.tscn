@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwt2rnxxa4qla" path="res://assets/demo-creature-sheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://djalw4bihdg6w" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://chfurerv782qn" path="res://scripts/camera.gd" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 size = Vector2(20, 17)
@@ -159,6 +160,7 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 rotation_smoothing_enabled = true
+script = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1299267809]
 position = Vector2(0, 2.5)

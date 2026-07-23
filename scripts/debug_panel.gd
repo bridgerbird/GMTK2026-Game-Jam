@@ -14,7 +14,11 @@ var fields = [
 	{ "property": "float_gravity", "label": "Float Gravity", "tab": "Jump" },
 	{ "property": "float_threshold", "label": "Float Threshold", "tab": "Jump" },
 	{ "property": "jump_cut_multiplier", "label": "Jump Cut Multiplier", "tab": "Jump" },
-	{ "property": "number_of_jumps", "label": "Number of Jumps", "tab": "Jump" }
+	{ "property": "number_of_jumps", "label": "Number of Jumps", "tab": "Jump" },
+	{ "property": "zoom_in", "label": "Zoom In", "tab": "Camera" },
+	{ "property": "zoom_out", "label": "Zoom Out", "tab": "Camera" },
+	{ "property": "zoom_in_wait", "label": "Zoom In Wait", "tab": "Camera" },
+	{ "property": "chase_vertical_wait", "label": "Chase Vertical Wait", "tab": "Camera" }
 ]
 
 # show the text
