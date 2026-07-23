@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://facs5c2kvssy"]
 
 [ext_resource type="Texture2D" uid="uid://bwt2rnxxa4qla" path="res://assets/demo-creature-sheet.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://djalw4bihdg6w" path="res://scripts/player.gd" id="1_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
+size = Vector2(20, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -80,10 +84,15 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1322426992]
+script = ExtResource("1_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2114419768]
+zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1299267809]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_tuyoq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=796612001]
 sprite_frames = SubResource("SpriteFrames_u8vuu")
+animation = &"walk"
