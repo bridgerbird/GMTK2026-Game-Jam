@@ -16,6 +16,8 @@ var fields = [
 	{ "property": "float_threshold", "label": "Float Threshold", "tab": "Jump" },
 	{ "property": "jump_cut_multiplier", "label": "Jump Cut Multiplier", "tab": "Jump" },
 	{ "property": "number_of_jumps", "label": "Number of Jumps", "tab": "Jump" },
+	{ "property": "jump_twist_time", "label": "Jump Twist Time", "tab": "Jump" },
+	{ "property": "jump_twist_float", "label": "Jump Twist Float", "tab": "Jump" },
 	{ "property": "zoom_in", "label": "Zoom In", "tab": "Camera" },
 	{ "property": "initial_lerp_speed", "label": "Initial Lerp Speed", "tab": "Camera" },
 	{ "property": "zoom_out", "label": "Zoom Out", "tab": "Camera" },

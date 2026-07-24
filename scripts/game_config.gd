@@ -12,7 +12,9 @@ var descend_gravity = 2000.0
 var float_gravity = 260.0
 var float_threshold = 17.0
 var jump_cut_multiplier = 0.25
-var number_of_jumps = 2.0
+var number_of_jumps = 1.0
+var jump_twist_time = 0.4
+var jump_twist_float = 400.0
 
 # Camera Configs
 var zoom_in = 2.8

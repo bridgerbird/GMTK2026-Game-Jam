@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 
 var jumps = GameConfig.number_of_jumps
+var twist_time = GameConfig.jump_twist_time
 
 # Updates and Starts playing the correct animation
 func update_animation(animation_state):
@@ -18,20 +19,45 @@ func update_animation(animation_state):
 
 func handle_normal_movement(delta):
 	# Add gravity to player.
+	# and handle Twist ability
 	if not is_on_floor():
+		# Check for twist input
+		var twist_override = false
+		# Handle the start of the twist
+		if Input.is_action_just_pressed("twist"):
+			twist_override = true
+			update_animation("twist")
+			# Start timer on twist
+			twist_time -= delta
+		# Handle the middle and end of the twist
+		elif twist_time < GameConfig.jump_twist_time:
+			if twist_time > 0.0:
+				twist_override = true
+				twist_time -= delta
+			else:
+				twist_time = GameConfig.jump_twist_time
+		
 		# Beginning of jump, use ascend_gravity
 		if velocity.y < -GameConfig.float_threshold:
 			velocity.y += GameConfig.ascend_gravity * delta
-			update_animation("jump")
+			if not twist_override:
+				update_animation("jump")
 		# End of jump (the fall), use descend_gravity
 		elif velocity.y > GameConfig.float_threshold:
-			velocity.y += GameConfig.descend_gravity * delta
-			update_animation("fall")
+			if twist_override:
+				velocity.y += GameConfig.jump_twist_float * delta
+			else:
+				velocity.y += GameConfig.descend_gravity * delta
+				update_animation("fall")
 		# Middle of jump (between negative and positive float_threshold)
 		#	use float_gravity
 		else:
-			velocity.y += GameConfig.float_gravity * delta
-			update_animation("jump_peak")
+			if twist_override:
+				velocity.y += GameConfig.jump_twist_float * delta
+			else:
+				velocity.y += GameConfig.float_gravity * delta
+				update_animation("jump_peak")
+		
 	
 	# Remove a jump if fell off edge
 	#	without it, you can still jump after falling
