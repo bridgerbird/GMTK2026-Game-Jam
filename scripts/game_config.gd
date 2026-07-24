@@ -1,5 +1,11 @@
 extends Node
 
+# Phase Tiles Configs
+var tile_phase = {
+	"blue": false,
+	"orange": true
+}
+
 # Platforming Configs
 var walk_speed = 180.0
 var run_speed = 420.0

@@ -15,8 +15,12 @@ tile_map_data = PackedByteArray("AAD//wEAAAACAAEAAAD+/wEAAAADAAAAAAD9/wEAAAACAAA
 tile_set = ExtResource("1_2x0bi")
 
 [node name="BlueTiles" type="TileMapLayer" parent="." unique_id=1942993903]
+tile_map_data = PackedByteArray("AAAgAAEABAAAAAAAAAAgAAAABAAAAAAAAAAgAP//BAAAAAAAAAAgAP7/BAAAAAAAAAAgAP3/BAAAAAAAAAAhAP3/BAAAAAAAAAAiAP3/BAAAAAAAAAAjAP3/BAAAAAAAAAAkAP3/BAAAAAAAAAAhAP7/BAAAAAAAAAA=")
+tile_set = ExtResource("1_2x0bi")
 
 [node name="OrangeTiles" type="TileMapLayer" parent="." unique_id=124337357]
+tile_map_data = PackedByteArray("AAAlAAEABQADAAAAAAAlAAAABQADAAAAAAAlAP//BQADAAAAAAAlAP7/BQADAAAAAAAlAP3/BQADAAAAAAAmAP3/BQADAAAAAAAnAP3/BQADAAAAAAAoAP3/BQADAAAAAAApAP3/BQADAAAAAAAmAP7/BQADAAAAAAA=")
+tile_set = ExtResource("1_2x0bi")
 
 [node name="CPZ-Tiles" type="TileMapLayer" parent="." unique_id=598302516]
 
