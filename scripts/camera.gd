@@ -30,9 +30,9 @@ func _process(delta):
 			initial_zoom_flag = false
 	
 	# Handle Zoom Out for faster speeds
-	# while moving, check if velocity > 60% of move speed,
+	# while moving, check if velocity > 60% of run speed,
 	#	then zoom in
-	if abs(get_parent().velocity.x) >= GameConfig.move_speed * 0.6:
+	if abs(get_parent().velocity.x) >= GameConfig.run_speed * 0.6:
 		target_zoom = zoom_out
 		target_speed = GameConfig.zoom_lerp_speed
 		# Reset the idle timer here since this is where you start moving again

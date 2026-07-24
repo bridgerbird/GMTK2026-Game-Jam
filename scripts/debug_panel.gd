@@ -4,7 +4,8 @@ const ConfigFieldScene = preload("res://scenes/ConfigField.tscn")
 
 # text displays
 var fields = [
-	{ "property": "move_speed", "label": "Move Speed", "tab": "Movement" },
+	{ "property": "walk_speed", "label": "Walk Speed", "tab": "Movement" },
+	{ "property": "run_speed", "label": "Run Speed", "tab": "Movement" },
 	{ "property": "acceleration", "label": "Acceleration", "tab": "Movement" },
 	{ "property": "deceleration", "label": "Deceleration", "tab": "Movement" },	
 	{ "property": "turn_speed", "label": "Turn Speed", "tab": "Movement" },	

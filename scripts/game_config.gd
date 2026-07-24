@@ -1,7 +1,8 @@
 extends Node
 
 # Platforming Configs
-var move_speed = 420.0
+var walk_speed = 180.0
+var run_speed = 420.0
 var acceleration = 1000.0
 var deceleration = 1750.0
 var turn_speed = 100.0
