@@ -45,7 +45,8 @@ func handle_normal_movement(delta):
 		# End of jump (the fall), use descend_gravity
 		elif velocity.y > GameConfig.float_threshold:
 			if twist_override:
-				velocity.y += GameConfig.jump_twist_float * delta
+				# Twist gravity
+				velocity.y -= GameConfig.jump_twist_float * delta
 			else:
 				velocity.y += GameConfig.descend_gravity * delta
 				update_animation("fall")
@@ -57,7 +58,7 @@ func handle_normal_movement(delta):
 			else:
 				velocity.y += GameConfig.float_gravity * delta
 				update_animation("jump_peak")
-		
+		print(velocity)
 	
 	# Remove a jump if fell off edge
 	#	without it, you can still jump after falling
