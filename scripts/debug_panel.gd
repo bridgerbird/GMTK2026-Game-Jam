@@ -4,6 +4,7 @@ const ConfigFieldScene = preload("res://scenes/ConfigField.tscn")
 
 # text displays
 var fields = [
+	{ "property": "debug_phase_override", "label": "Debug Phase Override", "tab": "Phases" },	
 	{ "property": "walk_speed", "label": "Walk Speed", "tab": "Movement" },
 	{ "property": "run_speed", "label": "Run Speed", "tab": "Movement" },
 	{ "property": "acceleration", "label": "Acceleration", "tab": "Movement" },

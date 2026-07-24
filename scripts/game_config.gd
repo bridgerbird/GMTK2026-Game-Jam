@@ -5,6 +5,7 @@ var tile_phase = {
 	"blue": false,
 	"orange": true
 }
+var debug_phase_override = 0.0
 
 # Platforming Configs
 var walk_speed = 180.0

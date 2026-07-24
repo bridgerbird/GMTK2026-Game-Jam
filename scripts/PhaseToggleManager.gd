@@ -7,7 +7,7 @@ var blue_tile_phase = GameConfig.tile_phase["blue"]
 var orange_tile_phase = GameConfig.tile_phase["orange"]
 
 # Toggles Phase of Blue and Orange tiles
-func toggle_tiles(initialize):
+func toggle_tiles(initialize = false):
 	# On Initialization, only collision and opacity needs updates
 	
 	# Update variables except on initialization
@@ -29,3 +29,10 @@ func toggle_tiles(initialize):
 
 func _ready():
 	toggle_tiles(true)
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("toggle_phases"):
+		# if player_in_zone or
+		if GameConfig.debug_phase_override:
+			toggle_tiles()
+	pass

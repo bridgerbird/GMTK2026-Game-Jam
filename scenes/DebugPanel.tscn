@@ -13,18 +13,23 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 40.0
-current_tab = 0
+current_tab = 1
+
+[node name="Phases" type="VBoxContainer" parent="Panel/TabContainer" unique_id=533572506]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="Movement" type="VBoxContainer" parent="Panel/TabContainer" unique_id=417091395]
 layout_mode = 2
-metadata/_tab_index = 0
+metadata/_tab_index = 1
 
 [node name="Jump" type="VBoxContainer" parent="Panel/TabContainer" unique_id=220843656]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="Camera" type="VBoxContainer" parent="Panel/TabContainer" unique_id=1929628009]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
