@@ -1,5 +1,9 @@
 extends Node
 
+# Level completion timer
+var level_time = 0.0
+var level_completed = false
+
 # Tile Map Layer Variables
 @onready var BlueTiles = $BlueTiles
 @onready var OrangeTiles = $OrangeTiles
@@ -11,6 +15,12 @@ extends Node
 
 var blue_tile_phase = GameConfig.tile_phase["blue"]
 var orange_tile_phase = GameConfig.tile_phase["orange"]
+
+func format_time(seconds):
+	var mins = int(seconds) / 60
+	var secs = int(seconds) % 60
+	var msecs = int((seconds - int(seconds)) * 1000)
+	return "%02d:%02d.%03d" % [mins, secs, msecs]
 
 # Toggles Phase of Blue and Orange tiles
 func toggle_tiles(initialize = false):
@@ -41,6 +51,11 @@ func _ready():
 	InvisibleTiles.modulate.a = 0.0
 
 func _physics_process(delta):
+	# Level Completion Time
+	if not level_completed:
+		level_time += delta
+		$LevelCompletionTime/Label.text = format_time(level_time)
+	
 	# Controlled Player Zone detection
 	var player_cell = GreenZoneTiles.local_to_map(player.global_position)
 	var player_in_green = GreenZoneTiles.get_cell_source_id(player_cell) != -1
@@ -60,4 +75,8 @@ func _physics_process(delta):
 	
 	# Toggle phase shift at timer end
 	# FIXME see above
-	
+
+
+func _on_level_finished():
+	level_completed = true
+	print("Level finished in: ", level_time, " seconds")

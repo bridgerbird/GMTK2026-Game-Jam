@@ -35,6 +35,17 @@ tile_set = ExtResource("1_2x0bi")
 
 [node name="TilePhaseTimer" type="Timer" parent="." unique_id=1965670127]
 
+[node name="LevelCompletionTime" type="CanvasLayer" parent="." unique_id=536202024]
+
+[node name="Label" type="Label" parent="LevelCompletionTime" unique_id=2107131775]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
 [node name="Player" parent="." unique_id=1322426992 instance=ExtResource("1_sigjl")]
 
 [node name="CanvasLayer_DebugPanel" parent="." unique_id=633481829 instance=ExtResource("3_oycks")]
