@@ -11,6 +11,7 @@ var level_completed = false
 @onready var TimerTiles = $"TAZ-Tiles"
 @onready var Spikes = $SpikeTiles
 @onready var InvisibleTiles = $INVISIBLE
+@onready var FLAG = $FLAG
 # Other Node Variables
 @onready var tile_timer = $TilePhaseTimer
 @onready var tile_time_label = $TilePhaseTime/Label
@@ -68,6 +69,14 @@ func _ready():
 	last_checkpoint = player.global_position
 
 func _physics_process(delta):
+	# Check for Level completion
+	var flag_cell = FLAG.local_to_map(player.global_position)
+	var player_at_flag = FLAG.get_cell_source_id(flag_cell) != -1
+	
+	if player_at_flag and not level_completed:
+		#level_completed = true
+		_on_level_finished()
+	
 	# Level Completion Time
 	if not level_completed:
 		level_time += delta
@@ -126,7 +135,9 @@ func _physics_process(delta):
 # Triggers when level is completed
 func _on_level_finished():
 	level_completed = true
-	print("Level finished in: ", level_time, " seconds")
+	tile_time_label.modulate.a = 1.0
+	tile_time_label.text = str(level_time).pad_decimals(2)
+	
 
 # Triggers each time TilePhaseTimer reaches 0
 func _on_tile_phase_timer_timeout():
