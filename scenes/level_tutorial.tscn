@@ -34,6 +34,23 @@ tile_map_data = PackedByteArray("AAD9/wQAAwADAAIAAAD9/wMAAwADAAIAAAD9/wIAAwADAAI
 tile_set = ExtResource("1_2x0bi")
 
 [node name="TilePhaseTimer" type="Timer" parent="." unique_id=1965670127]
+wait_time = 10.0
+
+[node name="TilePhaseTime" type="CanvasLayer" parent="." unique_id=905921665]
+
+[node name="Label" type="Label" parent="TilePhaseTime" unique_id=1050011405]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="LevelCompletionTime" type="CanvasLayer" parent="." unique_id=536202024]
 

@@ -10,12 +10,17 @@ var level_completed = false
 @onready var GreenZoneTiles = $"CPZ-Tiles"
 @onready var TimerTiles = $"TAZ-Tiles"
 @onready var InvisibleTiles = $INVISIBLE
-
+# Other Node Variables
+@onready var tile_timer = $TilePhaseTimer
+@onready var tile_time_label = $TilePhaseTime/Label
 @onready var player = $Player
 
 var blue_tile_phase = GameConfig.tile_phase["blue"]
 var orange_tile_phase = GameConfig.tile_phase["orange"]
 
+var was_in_timer_zone = false
+
+# Formats elapsed time into proper time stamp
 func format_time(seconds):
 	var mins = int(seconds) / 60
 	var secs = int(seconds) % 60
@@ -63,6 +68,20 @@ func _physics_process(delta):
 	# Timer Zone detection
 	var timer_cell = TimerTiles.local_to_map(player.global_position)
 	var player_in_timer_zone = TimerTiles.get_cell_source_id(timer_cell) != -1
+	
+	# Edge detection for time zones
+	if player_in_timer_zone and not was_in_timer_zone:
+		tile_timer.start()
+	if not player_in_timer_zone and was_in_timer_zone:
+		tile_timer.stop()
+	was_in_timer_zone = player_in_timer_zone
+	
+	# Display Timer if in a Time zone
+	if player_in_timer_zone:
+		tile_time_label.show()
+		tile_time_label.text = str(tile_timer.time_left).pad_decimals(2)
+	else:
+		tile_time_label.hide()
 	
 	# Toggle Phase shift on button press
 	if Input.is_action_just_pressed("toggle_phases"):
