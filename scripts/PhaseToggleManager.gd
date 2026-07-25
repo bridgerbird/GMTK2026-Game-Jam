@@ -64,6 +64,8 @@ func _ready():
 	# Turn Timer Zone and Invisible tiles transparent
 	TimerTiles.modulate.a = 0.0
 	InvisibleTiles.modulate.a = 0.0
+	# Save starting position
+	last_checkpoint = player.global_position
 
 func _physics_process(delta):
 	# Level Completion Time
