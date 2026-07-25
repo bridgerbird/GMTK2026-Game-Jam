@@ -75,8 +75,10 @@ func _physics_process(delta):
 	if player_in_timer_zone and not was_in_timer_zone:
 		tile_timer.start()
 	if not player_in_timer_zone and was_in_timer_zone:
+		# Timer fade out effect
 		var tween = create_tween()
 		tween.tween_property(tile_time_label, "modulate:a", 0.0, 0.3)  # fade in over 0.3s
+		# Stop the timer
 		tile_timer.stop()
 	was_in_timer_zone = player_in_timer_zone
 	
@@ -84,6 +86,11 @@ func _physics_process(delta):
 	if player_in_timer_zone:
 		tile_time_label.modulate.a = 1.0
 		tile_time_label.text = str(tile_timer.time_left).pad_decimals(2)
+	
+	# Pulse Effect on Timer
+	var fractional = tile_timer.time_left - int(tile_timer.time_left)
+	# fractional becomes anything between 0.999 and 0.0
+	tile_time_label.modulate.a = fractional
 	
 	# Toggle Phase shift on button press
 	if Input.is_action_just_pressed("toggle_phases"):
@@ -94,10 +101,13 @@ func _physics_process(delta):
 		elif GameConfig.debug_phase_override:
 			toggle_tiles()
 	
-	# Toggle phase shift at timer end
-	# FIXME see above
 
 
 func _on_level_finished():
 	level_completed = true
 	print("Level finished in: ", level_time, " seconds")
+
+# Triggers each time TilePhaseTimer reaches 0
+func _on_tile_phase_timer_timeout():
+	# Toggle phase shift at timer end
+	toggle_tiles()

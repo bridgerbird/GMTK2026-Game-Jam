@@ -67,3 +67,5 @@ grow_horizontal = 2
 [node name="Player" parent="." unique_id=1322426992 instance=ExtResource("1_sigjl")]
 
 [node name="CanvasLayer_DebugPanel" parent="." unique_id=633481829 instance=ExtResource("3_oycks")]
+
+[connection signal="timeout" from="TilePhaseTimer" to="." method="_on_tile_phase_timer_timeout"]
