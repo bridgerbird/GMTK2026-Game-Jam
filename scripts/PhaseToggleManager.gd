@@ -96,13 +96,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("toggle_phases"):
 		if player_in_green:
 			toggle_tiles()
-			#reset timer
-		# FIXME: Make this an elif once the above is implemented
+			tile_timer.start()
 		elif GameConfig.debug_phase_override:
 			toggle_tiles()
+			tile_timer.start()
 	
 
-
+# Triggers when level is completed
 func _on_level_finished():
 	level_completed = true
 	print("Level finished in: ", level_time, " seconds")
