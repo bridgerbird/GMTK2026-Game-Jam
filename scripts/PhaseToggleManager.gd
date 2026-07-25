@@ -135,9 +135,8 @@ func _physics_process(delta):
 # Triggers when level is completed
 func _on_level_finished():
 	level_completed = true
-	tile_time_label.modulate.a = 1.0
-	tile_time_label.text = str(level_time).pad_decimals(2)
-	
+	$LevelCompletionTime/Label.add_theme_font_size_override("font_size", 100)
+	$LevelCompletionTime/Label.add_theme_color_override("font_color", Color.GOLD)
 
 # Triggers each time TilePhaseTimer reaches 0
 func _on_tile_phase_timer_timeout():
