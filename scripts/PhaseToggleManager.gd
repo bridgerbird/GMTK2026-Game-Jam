@@ -51,6 +51,8 @@ func toggle_tiles(initialize = false):
 func _ready():
 	# Initialize state of Blue and Orange Tiles
 	toggle_tiles(true)
+	# Initialize Time Zone Label as invisible
+	tile_time_label.modulate.a = 0.0
 	# Turn Timer Zone and Invisible tiles transparent
 	TimerTiles.modulate.a = 0.0
 	InvisibleTiles.modulate.a = 0.0
@@ -73,15 +75,15 @@ func _physics_process(delta):
 	if player_in_timer_zone and not was_in_timer_zone:
 		tile_timer.start()
 	if not player_in_timer_zone and was_in_timer_zone:
+		var tween = create_tween()
+		tween.tween_property(tile_time_label, "modulate:a", 0.0, 0.3)  # fade in over 0.3s
 		tile_timer.stop()
 	was_in_timer_zone = player_in_timer_zone
 	
 	# Display Timer if in a Time zone
 	if player_in_timer_zone:
-		tile_time_label.show()
+		tile_time_label.modulate.a = 1.0
 		tile_time_label.text = str(tile_timer.time_left).pad_decimals(2)
-	else:
-		tile_time_label.hide()
 	
 	# Toggle Phase shift on button press
 	if Input.is_action_just_pressed("toggle_phases"):
