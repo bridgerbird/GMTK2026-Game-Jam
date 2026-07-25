@@ -9,6 +9,7 @@ var level_completed = false
 @onready var OrangeTiles = $OrangeTiles
 @onready var GreenZoneTiles = $"CPZ-Tiles"
 @onready var TimerTiles = $"TAZ-Tiles"
+@onready var Spikes = $SpikeTiles
 @onready var InvisibleTiles = $INVISIBLE
 # Other Node Variables
 @onready var tile_timer = $TilePhaseTimer
@@ -19,6 +20,8 @@ var blue_tile_phase = GameConfig.tile_phase["blue"]
 var orange_tile_phase = GameConfig.tile_phase["orange"]
 
 var was_in_timer_zone = false
+
+var last_checkpoint = Vector2.ZERO
 
 # Formats elapsed time into proper time stamp
 func format_time(seconds):
@@ -47,6 +50,11 @@ func toggle_tiles(initialize = false):
 	else:
 		BlueTiles.modulate.a = 0.3
 		OrangeTiles.modulate.a = 1.0
+
+# Respawns player to last checkpoint
+func respawn_player():
+	player.global_position = last_checkpoint
+	player.velocity = Vector2.ZERO
 
 func _ready():
 	# Initialize state of Blue and Orange Tiles
@@ -100,6 +108,17 @@ func _physics_process(delta):
 		elif GameConfig.debug_phase_override:
 			toggle_tiles()
 			tile_timer.start()
+	
+	# Spike Zone detection
+	var spike_cell = Spikes.local_to_map(player.global_position)
+	var player_touch_spikes = Spikes.get_cell_source_id(spike_cell) != -1
+	
+	# Green zones reset checkpoint
+	if player_in_green:
+		last_checkpoint = player.global_position
+	
+	if player_touch_spikes:
+		respawn_player()
 	
 
 # Triggers when level is completed

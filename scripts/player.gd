@@ -58,7 +58,6 @@ func handle_normal_movement(delta):
 			else:
 				velocity.y += GameConfig.float_gravity * delta
 				update_animation("jump_peak")
-		print(velocity)
 	
 	# Remove a jump if fell off edge
 	#	without it, you can still jump after falling
