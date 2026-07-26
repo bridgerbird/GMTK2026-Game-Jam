@@ -30,7 +30,7 @@ func format_time(seconds):
 	var mins = int(seconds) / 60
 	var secs = int(seconds) % 60
 	var msecs = int((seconds - int(seconds)) * 1000)
-	return "%02d:%02d.%03d" % [mins, secs, msecs]
+	return "%02d:%02d.%02d" % [mins, secs, msecs]
 
 # Toggles Phase of Blue and Orange tiles
 func toggle_tiles(initialize = false):
@@ -159,7 +159,7 @@ func _on_level_finished():
 	print(GameConfig.level_times)
 	# Decide which level to load
 	if level_file_name == "level_tutorial":
-		get_tree().change_scene_to_file("res://scenes/level_freerun.tscn")
+		get_tree().change_scene_to_file("res://scenes/SCORES.tscn")
 
 # Triggers each time TilePhaseTimer reaches 0
 func _on_tile_phase_timer_timeout():
