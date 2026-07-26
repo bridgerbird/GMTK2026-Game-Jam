@@ -137,6 +137,16 @@ func _on_level_finished():
 	level_completed = true
 	$LevelCompletionTime/Label.add_theme_font_size_override("font_size", 100)
 	$LevelCompletionTime/Label.add_theme_color_override("font_color", Color.GOLD)
+	# Level times and names
+	var level_file_name = get_tree().current_scene.name
+	var level_name
+	if level_file_name == "level_tutorial":
+		level_name = "Level 1"
+	elif level_file_name == "level_freerun":
+		level_name = "Level 2"
+	elif level_file_name == "level_technical":
+		level_name = "Level 3"
+	GameConfig.level_times[level_name] = level_time
 
 # Triggers each time TilePhaseTimer reaches 0
 func _on_tile_phase_timer_timeout():

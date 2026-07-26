@@ -1,5 +1,8 @@
 extends Node
 
+# Level Time Saves
+var level_times = {}
+
 # Phase Tiles Configs
 var tile_phase = {
 	"blue": false,
