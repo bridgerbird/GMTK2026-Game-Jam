@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://b5tnt0dm5b1nj" path="res://resources/Kenny_Tile_Set.tres" id="2_0ue8v"]
 [ext_resource type="PackedScene" uid="uid://facs5c2kvssy" path="res://scenes/player.tscn" id="3_deoyj"]
 [ext_resource type="PackedScene" uid="uid://c7e616l4ugpgm" path="res://scenes/DebugPanel.tscn" id="4_sy674"]
+[ext_resource type="PackedScene" uid="uid://c56odsbxea387" path="res://scenes/FadeLayer.tscn" id="5_0ue8v"]
 
 [node name="Node2D" type="Node2D" unique_id=1154494496]
 script = ExtResource("1_e3rgm")
@@ -83,5 +84,7 @@ position = Vector2(11, 9)
 
 [node name="CanvasLayer_DebugPanel" parent="." unique_id=633481829 instance=ExtResource("4_sy674")]
 visible = false
+
+[node name="FadeLayer" parent="." unique_id=1862685383 instance=ExtResource("5_0ue8v")]
 
 [connection signal="timeout" from="TilePhaseTimer" to="." method="_on_tile_phase_timer_timeout"]

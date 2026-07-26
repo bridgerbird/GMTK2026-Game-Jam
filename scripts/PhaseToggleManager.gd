@@ -16,6 +16,7 @@ var level_completed = false
 @onready var tile_timer = $TilePhaseTimer
 @onready var tile_time_label = $TilePhaseTime/Label
 @onready var player = $Player
+@onready var fade_layer = $FadeLayer/ColorRect
 
 var blue_tile_phase = GameConfig.tile_phase["blue"]
 var orange_tile_phase = GameConfig.tile_phase["orange"]
@@ -67,6 +68,8 @@ func _ready():
 	InvisibleTiles.modulate.a = 0.0
 	# Save starting position
 	last_checkpoint = player.global_position
+	# FadeLayer disable
+	fade_layer.modulate.a = 0.0
 
 func _physics_process(delta):
 	# Check for Level completion
@@ -147,6 +150,16 @@ func _on_level_finished():
 	elif level_file_name == "level_technical":
 		level_name = "Level 3"
 	GameConfig.level_times[level_name] = level_time
+	# Proceed to next level after fading
+	var level_fade_tween = create_tween()
+	level_fade_tween.tween_property(fade_layer, "modulate:a", 1.0, 2.5)  # fade in over 0.3s
+	await level_fade_tween.finished
+	print(level_file_name)
+	print(level_name)
+	print(GameConfig.level_times)
+	# Decide which level to load
+	if level_file_name == "level_tutorial":
+		get_tree().change_scene_to_file("res://scenes/level_freerun.tscn")
 
 # Triggers each time TilePhaseTimer reaches 0
 func _on_tile_phase_timer_timeout():

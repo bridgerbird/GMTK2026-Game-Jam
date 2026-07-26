@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://jx0iadpsuqhk" path="res://scripts/PhaseToggleManager.gd" id="1_ja6vh"]
 [ext_resource type="PackedScene" uid="uid://facs5c2kvssy" path="res://scenes/player.tscn" id="1_sigjl"]
 [ext_resource type="PackedScene" uid="uid://c7e616l4ugpgm" path="res://scenes/DebugPanel.tscn" id="3_oycks"]
+[ext_resource type="PackedScene" uid="uid://c56odsbxea387" path="res://scenes/FadeLayer.tscn" id="5_bul7g"]
 
-[node name="Node2D" type="Node2D" unique_id=1154494496]
+[node name="level_tutorial" type="Node2D" unique_id=1154494496]
 script = ExtResource("1_ja6vh")
 
 [node name="BACKGROUND" type="TileMapLayer" parent="." unique_id=687342379]
@@ -79,6 +80,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 
 [node name="Player" parent="." unique_id=1322426992 instance=ExtResource("1_sigjl")]
+position = Vector2(3894, -182)
 
 [node name="CanvasLayer_DebugPanel" parent="." unique_id=633481829 instance=ExtResource("3_oycks")]
 visible = false
@@ -129,5 +131,7 @@ offset_right = 3038.0
 offset_bottom = -432.0
 text = "Press W to twist in air.
 This slows your fall."
+
+[node name="FadeLayer" parent="." unique_id=1862685383 instance=ExtResource("5_bul7g")]
 
 [connection signal="timeout" from="TilePhaseTimer" to="." method="_on_tile_phase_timer_timeout"]
