@@ -159,6 +159,10 @@ func _on_level_finished():
 	print(GameConfig.level_times)
 	# Decide which level to load
 	if level_file_name == "level_tutorial":
+		get_tree().change_scene_to_file("res://scenes/level_freerun.tscn")
+	elif level_file_name == "level_freerun":
+		get_tree().change_scene_to_file("res://scenes/level_technical.tscn")
+	if level_file_name == "level_technical":
 		get_tree().change_scene_to_file("res://scenes/SCORES.tscn")
 
 # Triggers each time TilePhaseTimer reaches 0
